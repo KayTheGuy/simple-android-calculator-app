@@ -5,11 +5,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    float var1;
+    float var2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,35 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        TextView btnNum0 = (TextView) findViewById(R.id.tv_0);
+        TextView btnNum1 = (TextView) findViewById(R.id.tv_1);
+        TextView btnNum2 = (TextView) findViewById(R.id.tv_2);
+        TextView btnNum3 = (TextView) findViewById(R.id.tv_3);
+        TextView btnNum4 = (TextView) findViewById(R.id.tv_4);
+        TextView btnNum5 = (TextView) findViewById(R.id.tv_5);
+        TextView btnNum6 = (TextView) findViewById(R.id.tv_6);
+        TextView btnNum7 = (TextView) findViewById(R.id.tv_7);
+        TextView btnNum8 = (TextView) findViewById(R.id.tv_8);
+        TextView btnNum9 = (TextView) findViewById(R.id.tv_9);
+
+        TextView btnOpAdd = (TextView) findViewById(R.id.tv_add);
+        TextView btnOpEqual = (TextView) findViewById(R.id.tv_equal);
+
+        btnNum0.setOnClickListener(this);
+        btnNum1.setOnClickListener(this);
+        btnNum2.setOnClickListener(this);
+        btnNum3.setOnClickListener(this);
+        btnNum4.setOnClickListener(this);
+        btnNum5.setOnClickListener(this);
+        btnNum6.setOnClickListener(this);
+        btnNum7.setOnClickListener(this);
+        btnNum8.setOnClickListener(this);
+        btnNum9.setOnClickListener(this);
+        
+        btnOpAdd.setOnClickListener(this);
+        btnOpEqual.setOnClickListener(this);
+
     }
 
     @Override
@@ -48,5 +81,33 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        String currentResult;
+        float calResult;
+        TextView result = (TextView) findViewById(R.id.result);
+        currentResult = result.getText().toString();
+
+        if( v.getId() == R.id.tv_add ){
+            var1 = Float.parseFloat(currentResult);
+            System.out.println(var1);
+            currentResult = null;
+            result.setText(null);
+            return;
+        }
+
+        if( v.getId() == R.id.tv_equal ){
+            var2 = Float.parseFloat(currentResult);
+            System.out.println(var2);
+            currentResult = null;
+            calResult = var1 + var2;
+            result.setText(Float.toString(calResult));
+            return;
+        }
+
+        currentResult += ((TextView)v).getText().toString();
+        result.setText(currentResult);
     }
 }
