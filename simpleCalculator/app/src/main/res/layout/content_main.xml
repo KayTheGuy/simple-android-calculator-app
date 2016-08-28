@@ -37,7 +37,7 @@
             android:id="@+id/tv_7"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="40pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="7"
             />
@@ -46,7 +46,7 @@
             android:id="@+id/tv_8"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="40pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="8"/>
         <TextView
@@ -54,24 +54,24 @@
             android:id="@+id/tv_9"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="50pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="9"/>
         <TextView
             android:textColor="@color/colorLightGrey"
-            android:id="@+id/tv_C"
+            android:id="@+id/tv_DEL"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="30pt"
+            android:layout_width="38pt"
             android:layout_height="30pt"
-            android:text="C"/>
+            android:text="DEL"/>
 
         <TextView
             android:textColor="@color/colorLightGrey"
             android:id="@+id/tv_CE"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="30pt"
+            android:layout_width="38pt"
             android:layout_height="30pt"
             android:text="CE"/>
 
@@ -89,7 +89,7 @@
             android:id="@+id/tv_4"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="40pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="4"/>
         <TextView
@@ -97,7 +97,7 @@
             android:id="@+id/tv_5"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="40pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="5"/>
         <TextView
@@ -105,7 +105,7 @@
             android:id="@+id/tv_6"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="50pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="6"/>
         <TextView
@@ -113,7 +113,7 @@
             android:id="@+id/tv_div"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="30pt"
+            android:layout_width="38pt"
             android:layout_height="30pt"
             android:text="/"/>
 
@@ -122,7 +122,7 @@
             android:id="@+id/tv_module"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="30pt"
+            android:layout_width="38pt"
             android:layout_height="30pt"
             android:text="%"/>
 
@@ -140,7 +140,7 @@
             android:id="@+id/tv_1"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="40pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="1"/>
         <TextView
@@ -148,7 +148,7 @@
             android:id="@+id/tv_2"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="40pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="2"/>
         <TextView
@@ -156,7 +156,7 @@
             android:id="@+id/tv_3"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="50pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="3"/>
         <TextView
@@ -164,7 +164,7 @@
             android:id="@+id/tv_mult"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="30pt"
+            android:layout_width="38pt"
             android:layout_height="30pt"
             android:text="x"/>
 
@@ -173,7 +173,7 @@
             android:id="@+id/tv_pow"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="30pt"
+            android:layout_width="38pt"
             android:layout_height="30pt"
             android:text="^"/>
 
@@ -191,7 +191,7 @@
             android:id="@+id/tv_."
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="40pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="."/>
         <TextView
@@ -199,7 +199,7 @@
             android:id="@+id/tv_0"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="40pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="0"/>
         <TextView
@@ -207,7 +207,7 @@
             android:id="@+id/tv_equal"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="50pt"
+            android:layout_width="38pt"
             android:layout_height="40pt"
             android:text="="/>
         <TextView
@@ -215,18 +215,18 @@
             android:id="@+id/tv_add"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="30pt"
+            android:layout_width="38pt"
             android:layout_height="30pt"
             android:text="+"/>
 
         <TextView
             android:textColor="@color/colorLightGrey"
-            android:id="@+id/tv_root"
+            android:id="@+id/tv_sub"
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
-            android:layout_width="30pt"
+            android:layout_width="38pt"
             android:layout_height="30pt"
-            android:text="@string/square_root_symbol"/>
+            android:text="-"/>
 
     </LinearLayout>
 

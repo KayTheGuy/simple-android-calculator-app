@@ -46,9 +46,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView btnDot = (TextView) findViewById(R.id.tv__);
 
         TextView btnOpAdd = (TextView) findViewById(R.id.tv_add);
+        TextView btnOpSub = (TextView) findViewById(R.id.tv_sub);
+        TextView btnOpMult = (TextView) findViewById(R.id.tv_mult);
+        TextView btnOpDiv = (TextView) findViewById(R.id.tv_div);
+        TextView btnOpPower = (TextView) findViewById(R.id.tv_pow);
         TextView btnOpEqual = (TextView) findViewById(R.id.tv_equal);
+        TextView btnOpModul = (TextView) findViewById(R.id.tv_module);
 
         TextView btnCE = (TextView) findViewById(R.id.tv_CE);
+        TextView btnDEL = (TextView) findViewById(R.id.tv_DEL);
 
         btnNum0.setOnClickListener(this);
         btnNum1.setOnClickListener(this);
@@ -63,9 +69,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDot.setOnClickListener(this);
 
         btnOpAdd.setOnClickListener(this);
+        btnOpSub.setOnClickListener(this);
+        btnOpMult.setOnClickListener(this);
+        btnOpDiv.setOnClickListener(this);
+        btnOpPower.setOnClickListener(this);
+        btnOpModul.setOnClickListener(this);
         btnOpEqual.setOnClickListener(this);
 
         btnCE.setOnClickListener(this);
+        btnDEL.setOnClickListener(this);
 
     }
 
@@ -104,9 +116,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 memory = 0;
                 operationWaiting = false;
                 break;
+            case R.id.tv_DEL:
+                int len = currentInput.length();
+                if (len > 0) {
+                    result.setText(currentInput.substring(0, currentInput.length() - 1));
+                }
+                break;
             case R.id.tv_add:
                 if (operationWaiting) {//nothing to add
-                    Snackbar.make(v, "Please insert a number for the last operation first!", Snackbar.LENGTH_LONG)
+                    Snackbar.make(v, "Error: After each calculation hit equal before proceeding!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     return;
                 }
@@ -114,10 +132,85 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     memory = Double.parseDouble(currentInput);
                     operationWaiting = true;
                 } catch (NumberFormatException e) {
-                    Toast.makeText(this, "The number is too big! This is just a SIMPLE calculator! Nothing fancy!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
                 }
                 result.setText("");
                 lastOperation = R.id.tv_add;
+                break;
+            case R.id.tv_sub:
+                if (operationWaiting) {//nothing to subtract
+                    Snackbar.make(v, "Error: After each calculation hit equal before proceeding!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+                try {
+                    memory = Double.parseDouble(currentInput);
+                    operationWaiting = true;
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                }
+                result.setText("");
+                lastOperation = R.id.tv_sub;
+                break;
+            case R.id.tv_mult:
+                if (operationWaiting) {//nothing to multiply
+                    Snackbar.make(v, "Error: After each calculation hit equal before proceeding!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+                try {
+                    memory = Double.parseDouble(currentInput);
+                    operationWaiting = true;
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                }
+                result.setText("");
+                lastOperation = R.id.tv_mult;
+                break;
+            case R.id.tv_div:
+                if (operationWaiting) {//nothing to divid
+                    Snackbar.make(v, "Error: After each calculation hit equal before proceeding!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+                try {
+                    memory = Double.parseDouble(currentInput);
+                    operationWaiting = true;
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                }
+                result.setText("");
+                lastOperation = R.id.tv_div;
+                break;
+            case R.id.tv_pow:
+                if (operationWaiting) {
+                    Snackbar.make(v, "Error: After each calculation hit equal before proceeding!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+                try {
+                    memory = Double.parseDouble(currentInput);
+                    operationWaiting = true;
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                }
+                result.setText("");
+                lastOperation = R.id.tv_pow;
+                break;
+            case R.id.tv_module:
+                if (operationWaiting) {
+                    Snackbar.make(v, "Error: After each calculation hit equal before proceeding!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+                try {
+                    memory = Double.parseDouble(currentInput);
+                    operationWaiting = true;
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                }
+                result.setText("");
+                lastOperation = R.id.tv_module;
                 break;
             case R.id.tv_equal:
                 switch (lastOperation) {
@@ -127,7 +220,70 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             calResult = memory + temp;
                             result.setText(Double.toString(calResult));
                         } catch (NumberFormatException e) {
-                            Toast.makeText(this, "The number is too big! This is just a SIMPLE calculator! Nothing fancy!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                        }
+                        lastOperation = R.id.tv_equal;
+                        operationWaiting = false;
+                        break;
+                    case R.id.tv_sub:
+                        try {
+                            double temp = Double.parseDouble(currentInput);
+                            calResult = memory - temp;
+                            result.setText(Double.toString(calResult));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                        }
+                        lastOperation = R.id.tv_equal;
+                        operationWaiting = false;
+                        break;
+                    case R.id.tv_mult:
+                        try {
+                            double temp = Double.parseDouble(currentInput);
+                            calResult = memory * temp;
+                            result.setText(Double.toString(calResult));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                        }
+                        lastOperation = R.id.tv_equal;
+                        operationWaiting = false;
+                        break;
+                    case R.id.tv_div:
+                        try {
+                            double temp = Double.parseDouble(currentInput);
+                            if (temp == 0) {
+                                result.setText("");
+                                memory = 0;
+                                operationWaiting = false;
+                                lastOperation = -1;
+                                Toast.makeText(this, "Error: Division by 0 is invalid!", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            calResult = memory / temp;
+                            result.setText(Double.toString(calResult));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                        }
+                        lastOperation = R.id.tv_equal;
+                        operationWaiting = false;
+                        break;
+                    case R.id.tv_pow:
+                        try {
+                            double temp = Double.parseDouble(currentInput);
+                            calResult = Math.pow(memory , temp);
+                            result.setText(Double.toString(calResult));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                        }
+                        lastOperation = R.id.tv_equal;
+                        operationWaiting = false;
+                        break;
+                    case R.id.tv_module:
+                        try {
+                            double temp = Double.parseDouble(currentInput);
+                            calResult = memory % temp;
+                            result.setText(Double.toString(calResult));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
                         }
                         lastOperation = R.id.tv_equal;
                         operationWaiting = false;
@@ -136,6 +292,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             default:
+
+                if (v.getId() == R.id.tv__ && currentInput.contains(".")) {
+                    Toast.makeText(this, "Format Error: More than one decimal point in the input!", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (lastOperation == R.id.tv_equal) {
                     currentInput = "";
                     lastOperation = -1;
@@ -153,5 +314,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
 }
