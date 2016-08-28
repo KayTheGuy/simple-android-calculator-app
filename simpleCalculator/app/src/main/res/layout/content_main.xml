@@ -20,6 +20,10 @@
         android:background="@color/colorLightGrey"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:textSize="@dimen/result_text_large"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         />
     <LinearLayout
         android:paddingLeft="@dimen/activity_horizontal_margin"

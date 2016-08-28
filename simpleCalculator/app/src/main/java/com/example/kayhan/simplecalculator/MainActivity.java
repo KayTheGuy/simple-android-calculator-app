@@ -9,10 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    long memory = 0;
+    double memory = 0;
     int lastOperation = -1;
     boolean operationWaiting = false;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView btnNum7 = (TextView) findViewById(R.id.tv_7);
         TextView btnNum8 = (TextView) findViewById(R.id.tv_8);
         TextView btnNum9 = (TextView) findViewById(R.id.tv_9);
+        TextView btnDot = (TextView) findViewById(R.id.tv__);
 
         TextView btnOpAdd = (TextView) findViewById(R.id.tv_add);
         TextView btnOpEqual = (TextView) findViewById(R.id.tv_equal);
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnNum7.setOnClickListener(this);
         btnNum8.setOnClickListener(this);
         btnNum9.setOnClickListener(this);
+        btnDot.setOnClickListener(this);
 
         btnOpAdd.setOnClickListener(this);
         btnOpEqual.setOnClickListener(this);
@@ -91,43 +94,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         String currentInput = "";
-        long calResult;
+        double calResult;
         TextView result = (TextView) findViewById(R.id.result);
         currentInput = result.getText().toString();
 
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.tv_CE:
                 result.setText("");
                 memory = 0;
+                operationWaiting = false;
                 break;
             case R.id.tv_add:
-                if(operationWaiting){//nothing to add
+                if (operationWaiting) {//nothing to add
                     Snackbar.make(v, "Please insert a number for the last operation first!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     return;
                 }
-                try{
-                    memory = Long.parseLong(currentInput);
+                try {
+                    memory = Double.parseDouble(currentInput);
                     operationWaiting = true;
-                }
-                catch (NumberFormatException e){
-                    Snackbar.make(v, "The number is too big! This is just a SIMPLE calculator! Nothing fancy!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "The number is too big! This is just a SIMPLE calculator! Nothing fancy!", Toast.LENGTH_LONG).show();
                 }
                 result.setText("");
                 lastOperation = R.id.tv_add;
                 break;
             case R.id.tv_equal:
-                switch (lastOperation){
+                switch (lastOperation) {
                     case R.id.tv_add:
-                        try{
-                            Long temp = Long.parseLong(currentInput);
+                        try {
+                            double temp = Double.parseDouble(currentInput);
                             calResult = memory + temp;
-                            result.setText(Long.toString(calResult));
-                        }
-                        catch (NumberFormatException e){
-                            Snackbar.make(v, "The number is too big! This is just a SIMPLE calculator! Nothing fancy!", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
+                            result.setText(Double.toString(calResult));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(this, "The number is too big! This is just a SIMPLE calculator! Nothing fancy!", Toast.LENGTH_LONG).show();
                         }
                         lastOperation = R.id.tv_equal;
                         operationWaiting = false;
@@ -136,15 +136,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             default:
-                if(lastOperation == R.id.tv_equal){
+                if (lastOperation == R.id.tv_equal) {
                     currentInput = "";
                     lastOperation = -1;
                     operationWaiting = false;
                 }
+
                 //append numbers
-                currentInput += ((TextView)v).getText().toString();
-                result.setText(currentInput);
+                currentInput += ((TextView) v).getText().toString();
+
+                if (currentInput.length() > 44) {
+                    result.setText(currentInput.substring(1)); // too large for screen
+                } else {
+                    result.setText(currentInput);
+                }
                 break;
         }
     }
+
 }
