@@ -12,8 +12,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    float var1;
-    float var2;
+    long memory = 0;
+    int lastOperation = -1;
+    boolean operationWaiting = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView btnOpAdd = (TextView) findViewById(R.id.tv_add);
         TextView btnOpEqual = (TextView) findViewById(R.id.tv_equal);
 
+        TextView btnCE = (TextView) findViewById(R.id.tv_CE);
+
         btnNum0.setOnClickListener(this);
         btnNum1.setOnClickListener(this);
         btnNum2.setOnClickListener(this);
@@ -55,9 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnNum7.setOnClickListener(this);
         btnNum8.setOnClickListener(this);
         btnNum9.setOnClickListener(this);
-        
+
         btnOpAdd.setOnClickListener(this);
         btnOpEqual.setOnClickListener(this);
+
+        btnCE.setOnClickListener(this);
 
     }
 
@@ -85,29 +90,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        String currentResult;
-        float calResult;
+        String currentInput = "";
+        long calResult;
         TextView result = (TextView) findViewById(R.id.result);
-        currentResult = result.getText().toString();
+        currentInput = result.getText().toString();
 
-        if( v.getId() == R.id.tv_add ){
-            var1 = Float.parseFloat(currentResult);
-            System.out.println(var1);
-            currentResult = null;
-            result.setText(null);
-            return;
+        switch(v.getId()){
+            case R.id.tv_CE:
+                result.setText("");
+                memory = 0;
+                break;
+            case R.id.tv_add:
+                if(operationWaiting){//nothing to add
+                    Snackbar.make(v, "Please insert a number for the last operation first!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    return;
+                }
+                try{
+                    memory = Long.parseLong(currentInput);
+                    operationWaiting = true;
+                }
+                catch (NumberFormatException e){
+                    Snackbar.make(v, "The number is too big! This is just a SIMPLE calculator! Nothing fancy!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+                result.setText("");
+                lastOperation = R.id.tv_add;
+                break;
+            case R.id.tv_equal:
+                switch (lastOperation){
+                    case R.id.tv_add:
+                        try{
+                            Long temp = Long.parseLong(currentInput);
+                            calResult = memory + temp;
+                            result.setText(Long.toString(calResult));
+                        }
+                        catch (NumberFormatException e){
+                            Snackbar.make(v, "The number is too big! This is just a SIMPLE calculator! Nothing fancy!", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+                        lastOperation = R.id.tv_equal;
+                        operationWaiting = false;
+                        break;
+                }
+                break;
+
+            default:
+                if(lastOperation == R.id.tv_equal){
+                    currentInput = "";
+                    lastOperation = -1;
+                    operationWaiting = false;
+                }
+                //append numbers
+                currentInput += ((TextView)v).getText().toString();
+                result.setText(currentInput);
+                break;
         }
-
-        if( v.getId() == R.id.tv_equal ){
-            var2 = Float.parseFloat(currentResult);
-            System.out.println(var2);
-            currentResult = null;
-            calResult = var1 + var2;
-            result.setText(Float.toString(calResult));
-            return;
-        }
-
-        currentResult += ((TextView)v).getText().toString();
-        result.setText(currentResult);
     }
 }
