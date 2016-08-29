@@ -1,7 +1,7 @@
 package com.example.kayhan.simplecalculator;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,14 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         TextView btnNum0 = (TextView) findViewById(R.id.tv_0);
         TextView btnNum1 = (TextView) findViewById(R.id.tv_1);
@@ -97,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, AboutActivity.class);
+            String message = "just for test";
+            intent.putExtra("intro", message);
+            startActivity(intent);
             return true;
         }
 
@@ -136,21 +132,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 result.setText("");
                 lastOperation = R.id.tv_add;
-                break;
-            case R.id.tv_sub:
-                if (operationWaiting) {//nothing to subtract
-                    Snackbar.make(v, "Error: After each calculation hit equal before proceeding!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    return;
-                }
-                try {
-                    memory = Double.parseDouble(currentInput);
-                    operationWaiting = true;
-                } catch (NumberFormatException e) {
-                    Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
-                }
-                result.setText("");
-                lastOperation = R.id.tv_sub;
                 break;
             case R.id.tv_mult:
                 if (operationWaiting) {//nothing to multiply
@@ -269,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case R.id.tv_pow:
                         try {
                             double temp = Double.parseDouble(currentInput);
-                            calResult = Math.pow(memory , temp);
+                            calResult = Math.pow(memory, temp);
                             result.setText(Double.toString(calResult));
                         } catch (NumberFormatException e) {
                             Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
@@ -290,9 +271,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                 }
                 break;
-
+            case R.id.tv_sub:
+                if (!currentInput.isEmpty()) {
+                    if (operationWaiting) {//nothing to subtract
+                        Snackbar.make(v, "Error: After each calculation hit equal before proceeding!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        return;
+                    }
+                    try {
+                        memory = Double.parseDouble(currentInput);
+                        operationWaiting = true;
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(this, "Error: Invalid Operation!", Toast.LENGTH_SHORT).show();
+                    }
+                    result.setText("");
+                    lastOperation = R.id.tv_sub;
+                    break;
+                }
             default:
-
                 if (v.getId() == R.id.tv__ && currentInput.contains(".")) {
                     Toast.makeText(this, "Format Error: More than one decimal point in the input!", Toast.LENGTH_LONG).show();
                     return;

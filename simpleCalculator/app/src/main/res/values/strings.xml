@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Simple Calculator</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">About Me</string>
+
+    <string name="title_activity_about">Kayhan Dehghani</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="about_me">I am a 4th year Computing Science student at SFU and currently doing my Internship at SAP as a Tools Developer.</string>
 </resources>

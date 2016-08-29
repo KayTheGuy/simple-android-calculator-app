@@ -38,7 +38,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="7"
             />
         <TextView
@@ -47,7 +47,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="8"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -55,7 +55,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="9"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -63,7 +63,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="30pt"
+            android:layout_height="70pt"
             android:text="DEL"/>
 
         <TextView
@@ -72,7 +72,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="30pt"
+            android:layout_height="70pt"
             android:text="CE"/>
 
     </LinearLayout>
@@ -90,7 +90,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="4"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -98,7 +98,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="5"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -106,7 +106,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="6"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -114,7 +114,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="30pt"
+            android:layout_height="70pt"
             android:text="/"/>
 
         <TextView
@@ -123,7 +123,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="30pt"
+            android:layout_height="70pt"
             android:text="%"/>
 
     </LinearLayout>
@@ -141,7 +141,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="1"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -149,7 +149,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="2"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -157,7 +157,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="3"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -165,7 +165,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="30pt"
+            android:layout_height="70pt"
             android:text="x"/>
 
         <TextView
@@ -174,7 +174,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="30pt"
+            android:layout_height="70pt"
             android:text="^"/>
 
     </LinearLayout>
@@ -192,7 +192,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="."/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -200,7 +200,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="0"/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -208,7 +208,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="40pt"
+            android:layout_height="70pt"
             android:text="="/>
         <TextView
             android:textColor="@color/colorLightGrey"
@@ -216,7 +216,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="30pt"
+            android:layout_height="70pt"
             android:text="+"/>
 
         <TextView
@@ -225,7 +225,7 @@
             android:textSize="@dimen/item_touch_helper_max_drag_scroll_per_frame"
             android:clickable="true"
             android:layout_width="38pt"
-            android:layout_height="30pt"
+            android:layout_height="70pt"
             android:text="-"/>
 
     </LinearLayout>
